@@ -1,13 +1,7 @@
-import { io, path } from '../deps.ts';
+import { path } from '../deps.ts';
+import { readNumbers } from '../lib/read-lines.ts';
 
 const filename = path.join(Deno.cwd(), 'input.txt');
-
-async function* readLines<T>(filename: string, f: (s: string) => T) {
-  const fileReader = await Deno.open(filename);
-  for await (const line of io.readLines(fileReader)) {
-    yield f(line);
-  }
-}
 
 const sum = (...arr: number[]) => [...arr].reduce((acc, val) => acc + val, 0);
 
@@ -15,7 +9,7 @@ async function countIndividualDips() {
   let counter = 0;
   let prev = null;
 
-  for await (const current of readLines(filename, Number)) {
+  for await (const current of readNumbers(filename)) {
     if (prev != null && current > prev) {
       counter++;
     }
@@ -31,7 +25,7 @@ async function countSumDips() {
   let counter = 0;
   let [a, b, c]: Array<number | null> = [null, null, null];
 
-  for await (const current of readLines(filename, Number)) {
+  for await (const current of readNumbers(filename)) {
     if (a != null && b != null && c != null && sum(b, c, current) > sum(a, b, c)) {
       counter++;
     }
