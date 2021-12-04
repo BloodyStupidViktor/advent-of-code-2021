@@ -12,3 +12,12 @@ export async function* readNumbers(filename: string) {
     yield Number(line);
   }
 }
+
+// TODO: Refactor!
+export async function readAllLines(filename: string) {
+  const result: string[] = [];
+  for await (const line of readLines(filename)) {
+    result.push(line);
+  }
+  return result;
+}
