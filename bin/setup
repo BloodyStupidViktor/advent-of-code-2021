@@ -1,0 +1,10 @@
+if [[ -z $1 ]]; then
+  echo "No day specified! Usage: bin/setup <day>"
+  exit 1
+fi
+
+dir="day-$1"
+mkdir -p $dir
+touch "${dir}/solution.ts"
+touch "${dir}/input.txt"
+touch "${dir}/input-example.txt"

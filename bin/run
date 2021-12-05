@@ -1,0 +1,6 @@
+if [[ -z $1 ]]; then
+  echo "No day specified! Usage: bin/run <day>"
+  exit 1
+fi
+
+(cd "day-$1" && deno run --allow-read solution.ts)

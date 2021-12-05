@@ -2,5 +2,6 @@
 https://adventofcode.com/2021
 
 ```
-deno run --allow-read <solution>
+bin/setup <day>
+bin/run <day>
 ```
