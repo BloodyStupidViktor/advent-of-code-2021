@@ -8,3 +8,5 @@ function printBingoBoardIndexes() {
     console.log(line.join(' '));
   }
 }
+
+printBingoBoardIndexes();
