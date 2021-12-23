@@ -17,3 +17,13 @@ export class NumberMap<K> extends BetterMap<K, number> {
     this.set(key, this.get(key) + value);
   }
 }
+
+export class ListMap<K, T = K> extends BetterMap<K, Array<T>> {
+  constructor(defaultValue = []) {
+    super(defaultValue);
+  }
+
+  add(key: K, value: T) {
+    this.set(key, [...this.get(key), value]);
+  }
+}
